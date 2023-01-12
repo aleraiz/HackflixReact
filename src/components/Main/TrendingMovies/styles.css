@@ -1,0 +1,27 @@
+.carousel {
+  width: 100%;
+  margin: 20px auto;
+  min-width: 320px;
+}
+
+.carousel-img {
+  max-width: 100%;
+  opacity: 0.5;
+}
+
+.b-radius {
+  border-radius: 20px;
+}
+
+.category-title {
+  letter-spacing: 0.2rem;
+  font-size: 1.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding-bottom: 0.5rem;
+}
+
+/* @media (max-width: 1000px) {
+  .carousel {
+    max-width: 1000px;
+  }
+} */
