@@ -3,14 +3,17 @@ import Footer from "./components/Footer/Footer";
 import Main from "./components/Main/Main";
 import NavbarComponent from "./components/Navbar/NavbarComponent";
 import Container from "react-bootstrap/Container";
-import ThemeProvider from "react-bootstrap/ThemeProvider";
-
+import { Routes, Route } from "react-router-dom";
+import MovieDetail from "./components/MovieDetail/MovieDetail";
 function App() {
   return (
     <div className="bg-dark">
       <Container>
         <NavbarComponent />
-        <Main />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/movie/:id" element={<MovieDetail />} />
+        </Routes>
         <Footer />
       </Container>
     </div>

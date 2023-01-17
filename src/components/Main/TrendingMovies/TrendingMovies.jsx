@@ -20,7 +20,7 @@ const TrendingMovies = () => {
         },
       });
       setMovieData(response.data.results.slice(0, 8));
-      console.log(response.data.results.slice(0, 8));
+      // console.log(response.data.results.slice(0, 8));
     };
     getMovies();
   }, []);
