@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import "./styles.css";
+import { Link } from "react-router-dom";
 import Container from "react-bootstrap/esm/Container";
 import CategoryTitle from "../CategoryTitle/CategoryTitle";
 
@@ -16,6 +17,7 @@ const TrendingMovies = () => {
         url: "https://api.themoviedb.org/3/discover/movie?",
         params: {
           api_key: process.env.REACT_APP_API_KEY,
+          adult: false,
           sort_by: "popularity.desc",
         },
       });
@@ -28,16 +30,18 @@ const TrendingMovies = () => {
   return (
     <>
       <CategoryTitle firstLetter={"T"} text="RENDING MOVIES" />
-      <Carousel className="bg-dark carousel b-radius">
+      <Carousel className="bg-dark carousel b-radius mb-5">
         {movieData &&
           movieData.map((movie) => {
             return (
               <Carousel.Item key={movie.id}>
-                <img
-                  className="d-block w-100 img-fluid carousel-img b-radius"
-                  src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-                  alt="First slide"
-                />
+                <Link to={`/movie/${movie.id}`}>
+                  <img
+                    className="d-block w-100 img-fluid carousel-img b-radius"
+                    src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                    alt="First slide"
+                  />
+                </Link>
                 <Carousel.Caption>
                   <h3 className="text-light">{movie.original_title}</h3>
                   <p className="text-light">{movie.overview}</p>

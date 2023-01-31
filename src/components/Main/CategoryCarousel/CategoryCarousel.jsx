@@ -6,17 +6,12 @@ import Carousel from "react-bootstrap/Carousel";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
-
-// Import Swiper styles
+import "./Styles.css";
 import "swiper/css";
 import "swiper/css/navigation";
-
-// import "./styles.css";
-
-// import required modules
 import { Navigation } from "swiper";
 
-const CategoryCarousel = () => {
+const CategoryCarousel = ({ category, firstLetter, categoryText }) => {
   const [movieData, setMovieData] = useState(null);
 
   useEffect(() => {
@@ -27,29 +22,30 @@ const CategoryCarousel = () => {
         params: {
           api_key: process.env.REACT_APP_API_KEY,
           sort_by: "popularity.desc",
-          with_genres: 28,
+          adult: false,
+          with_genres: category,
         },
       });
       setMovieData(response.data.results);
-      console.log(response.data.results);
+      // console.log(response.data.results);
     };
     getMovies();
   }, []);
 
   return (
     <>
-      <CategoryTitle firstLetter={"A"} text="CTION" />
+      <CategoryTitle firstLetter={firstLetter} text={categoryText} />
       <Swiper
         slidesPerView={5}
         spaceBetween={10}
         navigation={true}
         modules={[Navigation]}
-        className="mySwiper"
+        className="mySwiper mb-5"
       >
         {movieData &&
           movieData.map((movie, index) => {
             return (
-              <SwiperSlide key={index}>
+              <SwiperSlide className="poster-movies" key={index}>
                 <Link to={`/movie/${movie.id}`}>
                   <Card className="bg-dark">
                     <Card.Img

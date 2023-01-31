@@ -5,6 +5,9 @@ import NavbarComponent from "./components/Navbar/NavbarComponent";
 import Container from "react-bootstrap/Container";
 import { Routes, Route } from "react-router-dom";
 import MovieDetail from "./components/MovieDetail/MovieDetail";
+import MovieSection from "./components/Main/MovieSection/MovieSection";
+import TvShows from "./components/Main/TvShows/TvShows";
+import About from "./components/Main/About/About";
 function App() {
   return (
     <div className="bg-dark">
@@ -13,6 +16,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/movie/:id" element={<MovieDetail />} />
+          <Route path="/movies" element={<MovieSection />} />
+          <Route path="/tvshows" element={<TvShows />} />
+          <Route path="/about" element={<About />} />
         </Routes>
         <Footer />
       </Container>

@@ -11,6 +11,8 @@ const MovieDetail = () => {
   const [movieData, setMovieData] = useState(null);
   const { id } = useParams();
 
+  console.log(id);
+
   useEffect(() => {
     const getMovie = async () => {
       const response = await axios({
@@ -30,48 +32,40 @@ const MovieDetail = () => {
 
   return (
     <>
-      <Container
-        className="movie-detail-bg d-flex align-items-end"
-        style={{
-          backgroundImage: movieData
-            ? `url(https://image.tmdb.org/t/p/original/${movieData.backdrop_path})`
-            : "none",
-        }}
-      >
-        {/* <Row className="d-flex justify-content-end p-4">
-          <div>
-            <iframe
-              className="movie-trailer"
-              width="360"
-              height="215"
-              src="https://www.youtube.com/embed/vGHrJDmepI0"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </Row> */}
-        <Row className="h-50">
-          <Row className="pb-5">
-            <h5 className="movie-info">
+      {movieData && (
+        <Container>
+          <div
+            className="volkorn movie-detail-bg w-100 d-flex flex-column justify-content-end p-4"
+            style={{
+              backgroundImage: `url(https://image.tmdb.org/t/p/original/${movieData.backdrop_path})`,
+            }}
+          >
+            <h3 className="text-white movie-title">
               {movieData && movieData.original_title}
-            </h5>
-          </Row>
-          <Row className="mb-5">
-            <div className="col-6">
-              <p className="movie-info">{movieData && movieData.overview}</p>
-            </div>
-            <div className="col-6 movie-info d-flex flex-column justify-content-between align-items-center">
-              <div>Vote average: {movieData && movieData.vote_average}</div>
-              <div>Release date: {movieData && movieData.release_date}</div>
-              <div>
-                <VideoModal />
+            </h3>
+            <hr className="text-white" />
+            <Row>
+              <div className="col-8">
+                <p className="text-white fw-bold">OVERVIEW</p>
+                <p className="movie-info">{movieData.overview}</p>
               </div>
-            </div>
-          </Row>
-        </Row>
-      </Container>
+              <div className="col-4 movie-info d-flex flex-column align-items-center justify-content-around">
+                <div>
+                  <p className="m-0 text-white fw-bold">VOTE AVERAGE:</p>
+                  <p>{movieData.vote_average}</p>
+                </div>
+                <div>
+                  <p className="m-0 text-white fw-bold">RELEASE DATE:</p>
+                  <p>{movieData.release_date}</p>
+                </div>
+                <div>
+                  <VideoModal videoKey={movieData.videos.results[0].key} />
+                </div>
+              </div>
+            </Row>
+          </div>
+        </Container>
+      )}
     </>
   );
 };

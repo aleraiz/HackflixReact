@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import "./styles.css";
 import { useEffect, useState } from "react";
 
-const VideoModal = () => {
+const VideoModal = ({ videoKey }) => {
   const values = [true, "sm-down", "md-down", "lg-down", "xl-down", "xxl-down"];
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
@@ -16,14 +16,17 @@ const VideoModal = () => {
 
   return (
     <>
-      <Button className="me-2 mb-2" onClick={() => handleShow()}>
+      <p className="me-2 mb-2 pointer" onClick={() => handleShow()}>
         Watch Trailer
-      </Button>
+      </p>
+      {/* <Button className="me-2 mb-2" onClick={() => handleShow()}>
+        Watch Trailer
+      </Button> */}
       <Modal show={show} fullscreen={true} onHide={() => setShow(false)}>
         <Modal.Body className="bg-dark d-flex justify-content-center align-items-center">
           <iframe
             className="movie-trailer"
-            src="https://www.youtube.com/embed/vGHrJDmepI0"
+            src={`https://www.youtube.com/embed/${videoKey}`}
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

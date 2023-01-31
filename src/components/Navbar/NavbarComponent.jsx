@@ -1,10 +1,11 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavbarComponent = () => {
+  const navigate = useNavigate();
   return (
     <Navbar
       collapseOnSelect
@@ -13,19 +14,27 @@ const NavbarComponent = () => {
       variant="dark"
       className="bokor-family text-spacing mb-2"
     >
-      {/* <Container className=""> */}
-      <Navbar.Brand
-        href="#home"
-        className="text-uppercase text-danger bokor-family"
-      >
-        Hackflix
+      <Navbar.Brand className="text-uppercase text-danger bokor-family">
+        <Nav.Link
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Hackflix
+        </Nav.Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="m-auto">
-          <Nav.Link href="#">Movies</Nav.Link>
-          <Nav.Link href="#">About us</Nav.Link>
-          <Nav.Link href="#">Contact</Nav.Link>
+          <Nav.Link as={Link} to={"/movies"}>
+            Movies
+          </Nav.Link>
+          <Nav.Link as={Link} to={"/tvshows"}>
+            TV Shows
+          </Nav.Link>
+          <Nav.Link as={Link} to={"/about"}>
+            About
+          </Nav.Link>
         </Nav>
         <Nav>
           <NavDropdown title="Search by" id="collasible-nav-dropdown">
@@ -35,7 +44,6 @@ const NavbarComponent = () => {
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>
-      {/* </Container> */}
     </Navbar>
   );
 };
