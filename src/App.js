@@ -8,6 +8,7 @@ import MovieDetail from "./components/MovieDetail/MovieDetail";
 import MovieSection from "./components/Main/MovieSection/MovieSection";
 import TvShows from "./components/Main/TvShows/TvShows";
 import About from "./components/Main/About/About";
+import TvShowDetail from "./components/Main/TvShowDetail/TvShowDetail";
 function App() {
   return (
     <div className="bg-dark">
@@ -18,6 +19,7 @@ function App() {
           <Route path="/movie/:id" element={<MovieDetail />} />
           <Route path="/movies" element={<MovieSection />} />
           <Route path="/tvshows" element={<TvShows />} />
+          <Route path="/tvshow/:id" element={<TvShowDetail />} />
           <Route path="/about" element={<About />} />
         </Routes>
         <Footer />
