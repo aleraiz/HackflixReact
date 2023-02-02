@@ -59,7 +59,13 @@ const MovieDetail = () => {
                   <p>{movieData.release_date}</p>
                 </div>
                 <div>
-                  <VideoModal videoKey={movieData.videos.results[0].key} />
+                  {movieData.videos.results.length > 0 ? (
+                    <VideoModal videoKey={movieData.videos.results[0].key} />
+                  ) : (
+                    // <VideoModal videoKey={null} />
+                    ""
+                  )}
+                  {/* <VideoModal videoKey={movieData.videos.results[0].key} /> */}
                 </div>
               </div>
             </Row>
