@@ -1,5 +1,5 @@
 .poster-movies {
-  transition: transform 400ms ease 400ms;
+  transition: transform 200ms ease-in-out 200ms;
   opacity: 0.9;
 }
 
@@ -10,9 +10,13 @@
 
 .btn-more {
   transition: 500ms;
+  border: 0px;
 }
 
 .btn-more:hover {
-  border-color: red !important;
   color: red !important;
+}
+
+.movies-title {
+  font-size: 50px;
 }

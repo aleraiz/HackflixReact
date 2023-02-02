@@ -34,7 +34,14 @@ const MovieSection = () => {
 
   return (
     <>
-      <Row className="d-flex justify-content-around">
+      <Row className="d-flex justify-content-center pt-3">
+        <span>
+          <h2 className="text-white-50 category-title bokor-family text-center movies-title">
+            MOVIES
+          </h2>
+        </span>
+      </Row>
+      <Row className="d-flex justify-content-around pt-2">
         {movieInfo &&
           movieInfo.map((movie, index) => {
             return (
@@ -54,13 +61,13 @@ const MovieSection = () => {
       <Row className="mt-4 justify-content-center">
         <Col sm={1}>
           <button
-            className="text-white bg-dark border border-2 border-light rounded btn-more"
+            className="text-white-50 bg-dark btn-more"
             onClick={(e) => {
               e.preventDefault();
               setPage(page + 1);
             }}
           >
-            Load more
+            Load More
           </button>
         </Col>
       </Row>
