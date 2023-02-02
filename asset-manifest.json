@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/HackflixReact/static/css/main.044c414c.css",
-    "main.js": "/HackflixReact/static/js/main.0d815f53.js",
+    "main.js": "/HackflixReact/static/js/main.1db17de8.js",
     "static/js/787.8a7cec45.chunk.js": "/HackflixReact/static/js/787.8a7cec45.chunk.js",
     "index.html": "/HackflixReact/index.html",
     "main.044c414c.css.map": "/HackflixReact/static/css/main.044c414c.css.map",
-    "main.0d815f53.js.map": "/HackflixReact/static/js/main.0d815f53.js.map",
+    "main.1db17de8.js.map": "/HackflixReact/static/js/main.1db17de8.js.map",
     "787.8a7cec45.chunk.js.map": "/HackflixReact/static/js/787.8a7cec45.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.044c414c.css",
-    "static/js/main.0d815f53.js"
+    "static/js/main.1db17de8.js"
   ]
 }
