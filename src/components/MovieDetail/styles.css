@@ -1,11 +1,11 @@
-.movie-detail-bg {
+/* .movie-detail-bg {
   min-height: 90vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 20px;
-  opacity: 0.9;
-}
+  opacity: 0.6;
+} */
 .pointer {
   cursor: pointer;
 }
@@ -28,6 +28,7 @@
 
 .movie-title {
   text-transform: uppercase;
+  opacity: 1;
 }
 
 .movie-info {
@@ -37,4 +38,8 @@
 
 .video-modal {
   min-height: 100vh;
+}
+
+.bg-text {
+  backdrop-filter: blur(10px);
 }

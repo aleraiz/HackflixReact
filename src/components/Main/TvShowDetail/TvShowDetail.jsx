@@ -43,7 +43,7 @@ const TvShowDetail = () => {
               {showData && showData.original_name}
             </h3>
             <hr className="text-white" />
-            <Row>
+            <Row className="bg-text">
               <div className="col-8">
                 <p className="text-white fw-bold">OVERVIEW</p>
                 <p className="movie-info">{showData.overview}</p>

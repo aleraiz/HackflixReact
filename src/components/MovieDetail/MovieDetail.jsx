@@ -44,14 +44,14 @@ const MovieDetail = () => {
               {movieData && movieData.original_title}
             </h3>
             <hr className="text-white" />
-            <Row>
+            <Row className="bg-text">
               <div className="col-8">
                 <p className="text-white fw-bold">OVERVIEW</p>
                 <p className="movie-info">{movieData.overview}</p>
               </div>
               <div className="col-4 movie-info d-flex flex-column align-items-center justify-content-around">
                 <div>
-                  <p className="m-0 text-white fw-bold">VOTE AVERAGE:</p>
+                  <p className="m-0 text-white fw-bold ">VOTE AVERAGE:</p>
                   <p>{movieData.vote_average}</p>
                 </div>
                 <div>
@@ -62,10 +62,8 @@ const MovieDetail = () => {
                   {movieData.videos.results.length > 0 ? (
                     <VideoModal videoKey={movieData.videos.results[0].key} />
                   ) : (
-                    // <VideoModal videoKey={null} />
                     ""
                   )}
-                  {/* <VideoModal videoKey={movieData.videos.results[0].key} /> */}
                 </div>
               </div>
             </Row>
