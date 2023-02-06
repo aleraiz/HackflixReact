@@ -1,5 +1,5 @@
 .poster-movies {
-  transition: transform 400ms ease 400ms;
+  transition: transform 400ms ease-in-out 400ms;
   opacity: 0.9;
 }
 
