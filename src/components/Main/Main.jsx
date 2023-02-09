@@ -27,6 +27,12 @@ const Main = () => {
         firstLetter={"C"}
         categoryText={"OMEDY"}
       />
+      <CategoryCarousel category={18} firstLetter={"D"} categoryText={"RAMA"} />
+      <CategoryCarousel
+        category={12}
+        firstLetter={"A"}
+        categoryText={"DVENTURE"}
+      />
     </div>
   );
 };

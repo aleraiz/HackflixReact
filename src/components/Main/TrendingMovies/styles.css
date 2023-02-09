@@ -16,8 +16,12 @@
 .category-title {
   letter-spacing: 0.2rem;
   font-size: 1.2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  /* border-bottom: 1px solid rgba(255, 255, 255, 0.5); */
   padding-bottom: 0.5rem;
+}
+
+.border-bottom-white {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 /* @media (max-width: 1000px) {

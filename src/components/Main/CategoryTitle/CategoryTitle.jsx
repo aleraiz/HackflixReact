@@ -3,7 +3,7 @@ import React from "react";
 const CategoryTitle = ({ firstLetter, text }) => {
   return (
     <div>
-      <h4 className="text-white-50 category-title bokor-family">
+      <h4 className="text-white-50 category-title border-bottom-white bokor-family">
         <span className="text-danger">{firstLetter}</span>
         {text}
       </h4>

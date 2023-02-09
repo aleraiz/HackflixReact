@@ -34,14 +34,17 @@ const TvShows = () => {
 
   return (
     <>
-      <Row className="d-flex justify-content-center pt-3">
-        <span>
-          <h2 className="text-white-50 category-title bokor-family text-center movies-title">
-            TV SHOWS
-          </h2>
-        </span>
+      <Row className="d-flex justify-content-center pt-3 border-bottom-white">
+        <Col>
+          <span>
+            <h2 className="text-white-50 category-title  bokor-family movies-title">
+              TV SHOWS
+            </h2>
+          </span>
+        </Col>
+        <Col></Col>
       </Row>
-      <Row className="d-flex justify-content-around pt-2">
+      <Row className="d-flex justify-content-around pt-4">
         {showsInfo &&
           showsInfo.map((movie, index) => {
             return (

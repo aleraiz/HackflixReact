@@ -2,13 +2,20 @@ import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Card, Row, Col } from "react-bootstrap";
+import { Card, Row, Col, Dropdown, DropdownButton } from "react-bootstrap";
 import "./Styles.css";
 
 const MovieSection = () => {
   const [movieInfo, setMovieInfo] = useState(null);
   const [page, setPage] = useState(1);
+  const [sortBy, setSortBy] = useState("popularity.desc");
   // console.log(movieInfo);
+
+  const handleSelect = (e) => {
+    setMovieInfo(null);
+    console.log(e);
+    setSortBy(e);
+  };
 
   useEffect(() => {
     const getMovies = async () => {
@@ -17,12 +24,13 @@ const MovieSection = () => {
         url: `https://api.themoviedb.org/3/discover/movie?`,
         params: {
           api_key: process.env.REACT_APP_API_KEY,
-          sort_by: "popularity.desc",
+          sort_by: sortBy,
           adult: false,
           page: page,
+          "vote_count.gte": 100,
         },
       });
-      // console.log(response.data.results);
+      console.log(response.data.results);
       {
         movieInfo == null
           ? setMovieInfo(response.data.results)
@@ -30,18 +38,62 @@ const MovieSection = () => {
       }
     };
     getMovies();
-  }, [, page]);
+  }, [, page, sortBy]);
 
   return (
     <>
-      <Row className="d-flex justify-content-center pt-3">
-        <span>
-          <h2 className="text-white-50 category-title bokor-family text-center movies-title">
-            MOVIES
-          </h2>
-        </span>
+      <Row className="d-flex justify-content-center pt-3 category-title border-bottom-white pb-0">
+        <Col>
+          <span>
+            <h2 className="text-white-50 category-title bokor-family movies-title">
+              MOVIES
+            </h2>
+          </span>
+        </Col>
+        <Col className="d-flex justify-content-end align-items-end text-white-50 bokor-family">
+          <DropdownButton
+            id="Sort-by"
+            variant="dark"
+            menuVariant="dark"
+            title="Sort by:"
+            className="mt-2 text-white-50"
+            onSelect={handleSelect}
+          >
+            <Dropdown.Item className="text-white-50" eventKey="popularity.desc">
+              Popularity
+            </Dropdown.Item>
+            <Dropdown.Item
+              className="text-white-50"
+              eventKey="vote_average.desc"
+            >
+              Rating
+            </Dropdown.Item>
+            <Dropdown.Item
+              className="text-white-50"
+              eventKey="release_date.desc"
+            >
+              Release date
+            </Dropdown.Item>
+          </DropdownButton>
+          <DropdownButton
+            id="genre"
+            variant="dark"
+            menuVariant="dark"
+            title="Genre"
+            className="mt-2"
+            bg="dark"
+          >
+            <Dropdown.Item className="text-white-50">Action</Dropdown.Item>
+            <Dropdown.Item className="text-white-50">Adventure</Dropdown.Item>
+            <Dropdown.Item className="text-white-50">Comedy</Dropdown.Item>
+            <Dropdown.Item className="text-white-50">Crime</Dropdown.Item>
+            <Dropdown.Item className="text-white-50">Drama</Dropdown.Item>
+            <Dropdown.Item className="text-white-50">Family</Dropdown.Item>
+            <Dropdown.Item className="text-white-50">Music</Dropdown.Item>
+          </DropdownButton>
+        </Col>
       </Row>
-      <Row className="d-flex justify-content-around pt-2">
+      <Row className="d-flex justify-content-around pt-4">
         {movieInfo &&
           movieInfo.map((movie, index) => {
             return (

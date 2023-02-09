@@ -11,7 +11,7 @@ import About from "./components/Main/About/About";
 import TvShowDetail from "./components/Main/TvShowDetail/TvShowDetail";
 function App() {
   return (
-    <div className="bg-dark">
+    <div className="bg-dark full-bg">
       <Container>
         <NavbarComponent />
         <Routes>

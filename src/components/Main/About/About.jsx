@@ -5,14 +5,14 @@ import "./Styles.css";
 const About = () => {
   return (
     <div className="about-section">
-      <Row className="d-flex justify-content-center pt-3">
+      <Row className="d-flex justify-content-center pt-3 border-bottom-white">
         <span>
           <h4 className="text-white-50 category-title bokor-family text-center">
             ABOUT THIS PROJECT
           </h4>
         </span>
       </Row>
-      <Row className="">
+      <Row className="mt-5">
         <Col>
           <p className="text-white-50 category-title bokor-family">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Et,
