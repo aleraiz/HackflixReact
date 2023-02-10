@@ -11,7 +11,7 @@ const MovieDetail = () => {
   const [movieData, setMovieData] = useState(null);
   const { id } = useParams();
 
-  console.log(id);
+  // console.log(id);
 
   useEffect(() => {
     const getMovie = async () => {

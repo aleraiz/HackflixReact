@@ -14,13 +14,13 @@ const MovieSection = () => {
 
   const handleSelect = (e) => {
     setMovieInfo(null);
-    console.log(e);
+    // console.log(e);
     setSortBy(e);
   };
 
   const handleSelectGenre = (e) => {
     setMovieInfo(null);
-    console.log(e);
+    // console.log(e);
     setGenre(e);
   };
 
@@ -38,7 +38,7 @@ const MovieSection = () => {
           with_genres: genre,
         },
       });
-      console.log(response.data.results);
+      // console.log(response.data.results);
       {
         movieInfo == null
           ? setMovieInfo(response.data.results)

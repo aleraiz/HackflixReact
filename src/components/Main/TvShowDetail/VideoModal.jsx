@@ -8,7 +8,7 @@ const VideoModal = ({ videoKey }) => {
   const values = [true, "sm-down", "md-down", "lg-down", "xl-down", "xxl-down"];
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
-  console.log(videoKey);
+  // console.log(videoKey);
 
   function handleShow(breakpoint) {
     setFullscreen(breakpoint);

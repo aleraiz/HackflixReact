@@ -13,13 +13,13 @@ const TvShows = () => {
 
   const handleSelect = (e) => {
     setShowsInfo(null);
-    console.log(e);
+    // console.log(e);
     setSortBy(e);
   };
 
   const handleSelectGenre = (e) => {
     setShowsInfo(null);
-    console.log(e);
+    // console.log(e);
     setGenre(e);
   };
 
