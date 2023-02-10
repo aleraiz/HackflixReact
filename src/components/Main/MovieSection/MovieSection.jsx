@@ -9,12 +9,19 @@ const MovieSection = () => {
   const [movieInfo, setMovieInfo] = useState(null);
   const [page, setPage] = useState(1);
   const [sortBy, setSortBy] = useState("popularity.desc");
+  const [genre, setGenre] = useState("");
   // console.log(movieInfo);
 
   const handleSelect = (e) => {
     setMovieInfo(null);
     console.log(e);
     setSortBy(e);
+  };
+
+  const handleSelectGenre = (e) => {
+    setMovieInfo(null);
+    console.log(e);
+    setGenre(e);
   };
 
   useEffect(() => {
@@ -28,6 +35,7 @@ const MovieSection = () => {
           adult: false,
           page: page,
           "vote_count.gte": 100,
+          with_genres: genre,
         },
       });
       console.log(response.data.results);
@@ -38,14 +46,14 @@ const MovieSection = () => {
       }
     };
     getMovies();
-  }, [, page, sortBy]);
+  }, [, page, sortBy, genre]);
 
   return (
     <>
-      <Row className="d-flex justify-content-center pt-3 category-title border-bottom-white pb-0">
+      <Row className="d-flex align-items-end pt-3 category-title -white pb-0 section-name">
         <Col>
           <span>
-            <h2 className="text-white-50 category-title bokor-family movies-title">
+            <h2 className="text-white-50 category-title bokor-family movies-title pb-0 m-0">
               MOVIES
             </h2>
           </span>
@@ -82,14 +90,32 @@ const MovieSection = () => {
             title="Genre"
             className="mt-2"
             bg="dark"
+            onSelect={handleSelectGenre}
           >
-            <Dropdown.Item className="text-white-50">Action</Dropdown.Item>
-            <Dropdown.Item className="text-white-50">Adventure</Dropdown.Item>
-            <Dropdown.Item className="text-white-50">Comedy</Dropdown.Item>
-            <Dropdown.Item className="text-white-50">Crime</Dropdown.Item>
-            <Dropdown.Item className="text-white-50">Drama</Dropdown.Item>
-            <Dropdown.Item className="text-white-50">Family</Dropdown.Item>
-            <Dropdown.Item className="text-white-50">Music</Dropdown.Item>
+            <Dropdown.Item className="text-white-50" eventKey="">
+              All
+            </Dropdown.Item>
+            <Dropdown.Item className="text-white-50" eventKey="28">
+              Action
+            </Dropdown.Item>
+            <Dropdown.Item className="text-white-50" eventKey="12">
+              Adventure
+            </Dropdown.Item>
+            <Dropdown.Item className="text-white-50" eventKey="35">
+              Comedy
+            </Dropdown.Item>
+            <Dropdown.Item className="text-white-50" eventKey="80">
+              Crime
+            </Dropdown.Item>
+            <Dropdown.Item className="text-white-50" eventKey="18">
+              Drama
+            </Dropdown.Item>
+            <Dropdown.Item className="text-white-50" eventKey="10751">
+              Family
+            </Dropdown.Item>
+            <Dropdown.Item className="text-white-50" eventKey="10402">
+              Music
+            </Dropdown.Item>
           </DropdownButton>
         </Col>
       </Row>
