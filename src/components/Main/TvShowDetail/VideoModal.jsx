@@ -36,36 +36,4 @@ const VideoModal = ({ videoKey }) => {
   );
 };
 
-// const VideoModal = (props) => {
-//   return (
-//     <Modal
-//       {...props}
-//       size="lg"
-//       aria-labelledby="contained-modal-title-vcenter"
-//       centered
-//     >
-//       <Modal.Header closeButton>
-//         {/* <Modal.Title id="contained-modal-title-vcenter">
-//           Modal heading
-//         </Modal.Title> */}
-//       </Modal.Header>
-//       <Modal.Body className="video-modal">
-//         <iframe
-//           className="movie-trailer"
-//           //   width="1000"
-//           //   height="215"
-//           src="https://www.youtube.com/embed/vGHrJDmepI0"
-//           title="YouTube video player"
-//           frameBorder="0"
-//           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-//           allowFullScreen
-//         ></iframe>
-//         {/* <Button onClick={props.onHide}>Close</Button> */}
-//       </Modal.Body>
-//       {/* <Modal.Footer>
-//       </Modal.Footer> */}
-//     </Modal>
-//   );
-// };
-
 export default VideoModal;

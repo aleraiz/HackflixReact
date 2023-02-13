@@ -30,11 +30,11 @@ const TvShows = () => {
         url: `https://api.themoviedb.org/3/discover/tv?`,
         params: {
           api_key: process.env.REACT_APP_API_KEY,
-          sort_by: "popularity.desc",
+          sort_by: sortBy,
           adult: false,
           with_original_language: "en",
           page: page,
-          "vote_count.gte": 10,
+          "vote_count.gte": 40,
           with_genres: genre,
         },
       });

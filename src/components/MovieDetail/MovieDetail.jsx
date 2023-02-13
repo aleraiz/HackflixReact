@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Container, Row, Modal, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import "./styles.css";
 import { useParams } from "react-router-dom";
 import VideoModal from "./VideoModal";
@@ -45,18 +45,18 @@ const MovieDetail = () => {
             </h3>
             <hr className="text-white" />
             <Row className="bg-text">
-              <div className="col-8">
+              <Col className="movie-overview">
                 <p className="text-white fw-bold">OVERVIEW</p>
                 <p className="movie-info">{movieData.overview}</p>
-              </div>
-              <div className="col-4 movie-info d-flex flex-column align-items-center justify-content-around">
-                <div>
+              </Col>
+              <Col className="movie-info d-flex flex-column align-items-center justify-content-around">
+                <div className="movie-info">
                   <p className="m-0 text-white fw-bold ">VOTE AVERAGE:</p>
-                  <p>{movieData.vote_average}</p>
+                  <p className="ms-2">{movieData.vote_average}</p>
                 </div>
-                <div>
+                <div className="movie-info">
                   <p className="m-0 text-white fw-bold">RELEASE DATE:</p>
-                  <p>{movieData.release_date}</p>
+                  <p className="ms-2">{movieData.release_date}</p>
                 </div>
                 <div>
                   {movieData.videos.results.length > 0 ? (
@@ -65,7 +65,7 @@ const MovieDetail = () => {
                     ""
                   )}
                 </div>
-              </div>
+              </Col>
             </Row>
           </div>
         </Container>
