@@ -43,6 +43,10 @@
   backdrop-filter: blur(10px);
 }
 
+.tv-title-mobile {
+  display: none;
+}
+
 @media (max-width: 576px) {
   .tv-overview {
     display: none;

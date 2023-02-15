@@ -55,6 +55,11 @@ const TvShowDetail = ({ width }) => {
                 <p className="movie-info">{showData.overview}</p>
               </Col>
               <Col className="movie-info d-flex flex-column align-items-center justify-content-around">
+                <div className="movie-info tv-title-mobile">
+                  <p className="ms-2 pt-2 text-white fw-bold">
+                    {showData.original_name}
+                  </p>
+                </div>
                 <div className="movie-info">
                   <p className="m-0 text-white fw-bold">VOTE AVERAGE:</p>
                   <p className="ms-2">{showData.vote_average}</p>
