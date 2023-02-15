@@ -1,0 +1,9 @@
+.spinner {
+  height: 85vh;
+}
+
+.loading {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 10px;
+}

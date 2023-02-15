@@ -24,8 +24,16 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-/* @media (max-width: 1000px) {
-  .carousel {
-    max-width: 1000px;
+@media (max-width: 768px) {
+  .carousel-movie-overview {
+    font-size: 10px;
   }
-} */
+}
+@media (max-width: 576px) {
+  .carousel-movie-overview {
+    display: none;
+  }
+  .carousel-movie-title {
+    display: none;
+  }
+}

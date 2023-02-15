@@ -2,36 +2,51 @@ import React from "react";
 import CategoryCarousel from "./CategoryCarousel/CategoryCarousel";
 import TrendingMovies from "./TrendingMovies/TrendingMovies";
 
-const Main = () => {
+const Main = ({ width }) => {
   return (
-    <div>
-      <TrendingMovies />
+    <div className="main-div">
+      <TrendingMovies width={width} />
       <CategoryCarousel
         category={28}
         firstLetter={"A"}
         categoryText={"CTION"}
+        width={width}
       />
       <CategoryCarousel
         category={10402}
         firstLetter={"M"}
         categoryText={"USIC"}
+        width={width}
       />
       <CategoryCarousel
         category={10751}
         firstLetter={"F"}
         categoryText={"AMILY"}
+        width={width}
       />
-      <CategoryCarousel category={80} firstLetter={"C"} categoryText={"RIME"} />
+      <CategoryCarousel
+        category={80}
+        firstLetter={"C"}
+        categoryText={"RIME"}
+        width={width}
+      />
       <CategoryCarousel
         category={35}
         firstLetter={"C"}
         categoryText={"OMEDY"}
+        width={width}
       />
-      <CategoryCarousel category={18} firstLetter={"D"} categoryText={"RAMA"} />
+      <CategoryCarousel
+        category={18}
+        firstLetter={"D"}
+        categoryText={"RAMA"}
+        width={width}
+      />
       <CategoryCarousel
         category={12}
         firstLetter={"A"}
         categoryText={"DVENTURE"}
+        width={width}
       />
     </div>
   );

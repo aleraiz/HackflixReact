@@ -5,12 +5,14 @@ import { Container, Row, Col } from "react-bootstrap";
 import "./styles.css";
 import { useParams } from "react-router-dom";
 import VideoModal from "./VideoModal";
+import { computeHeadingLevel } from "@testing-library/react";
 
-const MovieDetail = () => {
+const MovieDetail = ({ width }) => {
   const [modalShow, setModalShow] = useState(false);
   const [movieData, setMovieData] = useState(null);
   const { id } = useParams();
 
+  // console.log(width);
   // console.log(id);
 
   useEffect(() => {
@@ -25,7 +27,7 @@ const MovieDetail = () => {
       });
 
       setMovieData(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     };
     getMovie();
   }, []);
@@ -36,9 +38,15 @@ const MovieDetail = () => {
         <Container>
           <div
             className="volkorn movie-detail-bg w-100 d-flex flex-column justify-content-end p-4"
-            style={{
-              backgroundImage: `url(https://image.tmdb.org/t/p/original/${movieData.backdrop_path})`,
-            }}
+            style={
+              width < 767
+                ? {
+                    backgroundImage: `url(https://image.tmdb.org/t/p/original/${movieData.poster_path})`,
+                  }
+                : {
+                    backgroundImage: `url(https://image.tmdb.org/t/p/original/${movieData.backdrop_path})`,
+                  }
+            }
           >
             <h3 className="text-white movie-title">
               {movieData && movieData.original_title}

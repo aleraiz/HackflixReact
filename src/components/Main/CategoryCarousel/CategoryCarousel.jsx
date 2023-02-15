@@ -11,7 +11,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 
-const CategoryCarousel = ({ category, firstLetter, categoryText }) => {
+const CategoryCarousel = ({ category, firstLetter, categoryText, width }) => {
   const [movieData, setMovieData] = useState(null);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const CategoryCarousel = ({ category, firstLetter, categoryText }) => {
     <>
       <CategoryTitle firstLetter={firstLetter} text={categoryText} />
       <Swiper
-        slidesPerView={5}
+        slidesPerView={width < 576 ? 3 : width < 768 ? 4 : 5}
         spaceBetween={10}
         navigation={true}
         modules={[Navigation]}

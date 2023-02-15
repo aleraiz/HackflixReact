@@ -42,3 +42,13 @@
 .bg-text {
   backdrop-filter: blur(10px);
 }
+
+@media (max-width: 576px) {
+  .tv-overview {
+    display: none;
+  }
+
+  .movie-info {
+    display: flex;
+  }
+}
