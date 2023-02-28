@@ -59,7 +59,7 @@ const MovieDetail = ({ width }) => {
               </Col>
               <Col className="movie-info d-flex flex-column align-items-center justify-content-around">
                 <div className="movie-info movie-title-mobile">
-                  <p className="ms-2 pt-2">{movieData.original_title}</p>
+                  <p className="ms-2 pt-2 text-white fw-bold">{movieData.original_title}</p>
                 </div>
                 <div className="movie-info">
                   <p className="m-0 text-white fw-bold ">VOTE AVERAGE:</p>

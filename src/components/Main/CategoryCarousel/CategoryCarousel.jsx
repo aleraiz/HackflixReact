@@ -10,27 +10,10 @@ import "./Styles.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
+import { useMovies } from "../../../hooks/useMovies";
 
 const CategoryCarousel = ({ category, firstLetter, categoryText, width }) => {
-  const [movieData, setMovieData] = useState(null);
-
-  useEffect(() => {
-    const getMovies = async () => {
-      const response = await axios({
-        method: "get",
-        url: "https://api.themoviedb.org/3/discover/movie?",
-        params: {
-          api_key: process.env.REACT_APP_API_KEY,
-          sort_by: "popularity.desc",
-          adult: false,
-          with_genres: category,
-        },
-      });
-      setMovieData(response.data.results);
-      // console.log(response.data.results);
-    };
-    getMovies();
-  }, []);
+  const { movieData, isLoading } = useMovies("popularity.desc", 1, category);
 
   return (
     <>

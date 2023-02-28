@@ -1,36 +1,16 @@
 import React from "react";
-import axios from "axios";
-import { useState, useEffect } from "react";
+
 import Carousel from "react-bootstrap/Carousel";
 import "./styles.css";
 import { Link } from "react-router-dom";
-import Container from "react-bootstrap/esm/Container";
 import CategoryTitle from "../CategoryTitle/CategoryTitle";
 import SpinnerComponent from "../../Spinner/SpinnerComponent";
+import { useMovies } from "../../../hooks/useMovies";
 
 const TrendingMovies = ({ width }) => {
-  const [movieData, setMovieData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const { movieData, isLoading } = useMovies("popularity.desc");
 
-  useEffect(() => {
-    const getMovies = async () => {
-      const response = await axios({
-        method: "get",
-        url: "https://api.themoviedb.org/3/discover/movie?",
-        params: {
-          api_key: process.env.REACT_APP_API_KEY,
-          adult: false,
-          sort_by: "popularity.desc",
-        },
-      });
-      setMovieData(response.data.results.slice(0, 8));
-      // console.log(response.data.results.slice(0, 8));
-      setTimeout(() => {
-        return setIsLoading(false), 1000;
-      });
-    };
-    getMovies();
-  }, []);
+  const trendingMovieData = movieData;
 
   if (isLoading) {
     return <SpinnerComponent />;
@@ -39,8 +19,8 @@ const TrendingMovies = ({ width }) => {
       <>
         <CategoryTitle firstLetter={"T"} text="RENDING MOVIES" />
         <Carousel className="bg-dark carousel b-radius mb-5">
-          {movieData &&
-            movieData.map((movie) => {
+          {trendingMovieData &&
+            trendingMovieData.slice(0, 8).map((movie) => {
               return (
                 <Carousel.Item key={movie.id}>
                   <Link to={`/movie/${movie.id}`}>
