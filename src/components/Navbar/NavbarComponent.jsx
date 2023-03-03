@@ -36,13 +36,13 @@ const NavbarComponent = () => {
             About
           </Nav.Link>
         </Nav>
-        <Nav>
+        {/* <Nav>
           <NavDropdown title="Search by" id="collasible-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Title</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href="#action/3.2">Rating</NavDropdown.Item>
           </NavDropdown>
-        </Nav>
+        </Nav> */}
       </Navbar.Collapse>
     </Navbar>
   );

@@ -3,17 +3,18 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import "./styles.css";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import VideoModal from "./VideoModal";
-import { computeHeadingLevel } from "@testing-library/react";
 
 const MovieDetail = ({ width }) => {
   const [modalShow, setModalShow] = useState(false);
   const [movieData, setMovieData] = useState(null);
   const { id } = useParams();
+  const navigate = useNavigate();
 
-  // console.log(width);
-  // console.log(id);
+  const goBack = () => {
+    navigate(-1);
+  };
 
   useEffect(() => {
     const getMovie = async () => {
@@ -27,7 +28,6 @@ const MovieDetail = ({ width }) => {
       });
 
       setMovieData(response.data);
-      // console.log(response.data);
     };
     getMovie();
   }, []);
@@ -59,7 +59,9 @@ const MovieDetail = ({ width }) => {
               </Col>
               <Col className="movie-info d-flex flex-column align-items-center justify-content-around">
                 <div className="movie-info movie-title-mobile">
-                  <p className="ms-2 pt-2 text-white fw-bold">{movieData.original_title}</p>
+                  <p className="ms-2 pt-2 text-white fw-bold">
+                    {movieData.original_title}
+                  </p>
                 </div>
                 <div className="movie-info">
                   <p className="m-0 text-white fw-bold ">VOTE AVERAGE:</p>
@@ -75,6 +77,10 @@ const MovieDetail = ({ width }) => {
                   ) : (
                     ""
                   )}
+
+                  <span className="btn-return" onClick={goBack}>
+                    Back to
+                  </span>
                 </div>
               </Col>
             </Row>

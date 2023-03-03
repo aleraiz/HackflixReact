@@ -21,6 +21,27 @@
   font-size: 30px;
 }
 
+.btn-back {
+  letter-spacing: 0;
+  cursor: pointer;
+}
+
+.search {
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  padding: 0.1rem 0.5rem;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.search:focus {
+  outline: 0;
+}
+.search:focus::placeholder {
+  color: #fff;
+  transition: 700ms;
+}
+
 @media (max-width: 575px) {
   /* .poster-movies {
     width: 80%;

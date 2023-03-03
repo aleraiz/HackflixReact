@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export const useMovies = (sortBy, page = 1, genre = "") => {
+export const useMovies = (
+  sortBy = "popularity.desc",
+  page = 1,
+  genre = "*"
+) => {
   const [movieData, setMovieData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   // console.log(sortBy);
@@ -28,7 +32,7 @@ export const useMovies = (sortBy, page = 1, genre = "") => {
           ? setMovieData(response.data.results)
           : setMovieData([...movieData, ...response.data.results]);
       }
-      // console.log(response.data.results.slice(0, 8));
+      // console.log(response.data.results);
       setTimeout(() => {
         return setIsLoading(false), 1000;
       });

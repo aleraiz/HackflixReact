@@ -4,31 +4,54 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card, Row, Col, Dropdown, DropdownButton } from "react-bootstrap";
 import "./Styles.css";
+import AllMovies from "./AllMovies";
 import { useMovies } from "../../../hooks/useMovies";
+import SearchedMovies from "./SearchedMovies";
 
 const MovieSection = () => {
   const [page, setPage] = useState(1);
   const [sortBy, setSortBy] = useState("popularity.desc");
   const [genre, setGenre] = useState("");
-  // console.log(movieData);
+  const [movieName, setMovieName] = useState("");
+  const [searching, setSearching] = useState(false);
+  const { movieData, setMovieData } = useMovies(sortBy, page, genre);
+  console.log(searching);
 
-  const { movieData, setMovieData, isLoading } = useMovies(sortBy, page, genre);
+  const handleClick = () => {
+    setPage(1);
+    {
+      searching ? setSearching(false) : setSearching(true);
+    }
+  };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+    console.log(movieName);
+    setMovieName(e.target.value);
+  };
 
   const handleSelect = (e) => {
-    setMovieData(null);
+    if (e !== sortBy) {
+      setMovieData(null);
+    }
+    setPage(1);
     // console.log(e);
     setSortBy(e);
   };
 
   const handleSelectGenre = (e) => {
-    setMovieData(null);
-    // console.log(e);
+    if (e !== genre) {
+      setMovieData(null);
+    }
+    setPage(1);
+    console.log(e);
     setGenre(e);
   };
 
   return (
     <>
-      <Row className="d-flex align-items-end pt-3 category-title -white pb-0 section-name">
+      <Row className="d-flex align-items-end pt-3 category-title pb-0 section-name">
         <Col>
           <span>
             <h2 className="text-white-50 category-title bokor-family movies-title pb-0 m-0">
@@ -37,82 +60,94 @@ const MovieSection = () => {
           </span>
         </Col>
         <Col className="d-flex justify-content-end align-items-end text-white-50 bokor-family">
-          <DropdownButton
-            id="Sort-by"
-            variant="dark"
-            menuVariant="dark"
-            title="Sort by:"
-            className="mt-2 text-white-50"
-            onSelect={handleSelect}
-          >
-            <Dropdown.Item className="text-white-50" eventKey="popularity.desc">
-              Popularity
-            </Dropdown.Item>
-            <Dropdown.Item
-              className="text-white-50"
-              eventKey="vote_average.desc"
+          <form action="" className="me-1">
+            <input
+              type="text"
+              placeholder="Search Movie"
+              id="search"
+              className="search"
+              onChange={handleChange}
+              onClick={handleClick}
+            />
+          </form>
+          {searching && movieName.length == 0 && (
+            <span className="ms-3 btn-back" onClick={handleClick}>
+              Back
+            </span>
+          )}
+          {!searching && (
+            <DropdownButton
+              id="Sort-by"
+              variant="dark"
+              menuVariant="dark"
+              title="Sort by:"
+              className="mt-2 text-white-50"
+              onSelect={handleSelect}
             >
-              Rating
-            </Dropdown.Item>
-            <Dropdown.Item
-              className="text-white-50"
-              eventKey="release_date.desc"
+              <Dropdown.Item
+                className="text-white-50"
+                eventKey="popularity.desc"
+              >
+                Popularity
+              </Dropdown.Item>
+              <Dropdown.Item
+                className="text-white-50"
+                eventKey="vote_average.desc"
+              >
+                Rating
+              </Dropdown.Item>
+              <Dropdown.Item
+                className="text-white-50"
+                eventKey="release_date.desc"
+              >
+                Release date
+              </Dropdown.Item>
+            </DropdownButton>
+          )}
+          {!searching && (
+            <DropdownButton
+              id="genre"
+              variant="dark"
+              menuVariant="dark"
+              title="Genre"
+              className="mt-2"
+              bg="dark"
+              onSelect={handleSelectGenre}
             >
-              Release date
-            </Dropdown.Item>
-          </DropdownButton>
-          <DropdownButton
-            id="genre"
-            variant="dark"
-            menuVariant="dark"
-            title="Genre"
-            className="mt-2"
-            bg="dark"
-            onSelect={handleSelectGenre}
-          >
-            <Dropdown.Item className="text-white-50" eventKey="">
-              All
-            </Dropdown.Item>
-            <Dropdown.Item className="text-white-50" eventKey="28">
-              Action
-            </Dropdown.Item>
-            <Dropdown.Item className="text-white-50" eventKey="12">
-              Adventure
-            </Dropdown.Item>
-            <Dropdown.Item className="text-white-50" eventKey="35">
-              Comedy
-            </Dropdown.Item>
-            <Dropdown.Item className="text-white-50" eventKey="80">
-              Crime
-            </Dropdown.Item>
-            <Dropdown.Item className="text-white-50" eventKey="18">
-              Drama
-            </Dropdown.Item>
-            <Dropdown.Item className="text-white-50" eventKey="10751">
-              Family
-            </Dropdown.Item>
-            <Dropdown.Item className="text-white-50" eventKey="10402">
-              Music
-            </Dropdown.Item>
-          </DropdownButton>
+              <Dropdown.Item className="text-white-50" eventKey="*">
+                All
+              </Dropdown.Item>
+              <Dropdown.Item className="text-white-50" eventKey="28">
+                Action
+              </Dropdown.Item>
+              <Dropdown.Item className="text-white-50" eventKey="12">
+                Adventure
+              </Dropdown.Item>
+              <Dropdown.Item className="text-white-50" eventKey="35">
+                Comedy
+              </Dropdown.Item>
+              <Dropdown.Item className="text-white-50" eventKey="80">
+                Crime
+              </Dropdown.Item>
+              <Dropdown.Item className="text-white-50" eventKey="18">
+                Drama
+              </Dropdown.Item>
+              <Dropdown.Item className="text-white-50" eventKey="10751">
+                Family
+              </Dropdown.Item>
+              <Dropdown.Item className="text-white-50" eventKey="10402">
+                Music
+              </Dropdown.Item>
+            </DropdownButton>
+          )}
         </Col>
       </Row>
       <Row className="d-flex justify-content-around pt-4">
-        {movieData &&
-          movieData.map((movie, index) => {
-            return (
-              <Col sm={6} md={4} lg={3} key={index}>
-                <Card className="bg-dark poster-movies mb-3">
-                  <Link to={`/movie/${movie.id}`}>
-                    <Card.Img
-                      variant="top"
-                      src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                    />
-                  </Link>
-                </Card>
-              </Col>
-            );
-          })}
+        {!searching ? (
+          <AllMovies movieData={movieData} />
+        ) : (
+          <SearchedMovies page={page} movieName={movieName} />
+        )}
       </Row>
       <Row className="mt-4 justify-content-center">
         <Col sm={1}>

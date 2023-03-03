@@ -48,6 +48,10 @@
   display: none;
 }
 
+.btn-return {
+  cursor: pointer;
+}
+
 @media (max-width: 576px) {
   .movie-overview,
   .movie-title {
