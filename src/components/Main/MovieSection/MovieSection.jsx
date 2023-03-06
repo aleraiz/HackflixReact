@@ -15,7 +15,6 @@ const MovieSection = () => {
   const [movieName, setMovieName] = useState("");
   const [searching, setSearching] = useState(false);
   const { movieData, setMovieData } = useMovies(sortBy, page, genre);
-  console.log(searching);
 
   const handleClick = () => {
     setPage(1);
@@ -26,8 +25,6 @@ const MovieSection = () => {
 
   const handleChange = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
-    console.log(movieName);
     setMovieName(e.target.value);
   };
 
@@ -52,14 +49,14 @@ const MovieSection = () => {
   return (
     <>
       <Row className="d-flex align-items-end pt-3 category-title pb-0 section-name">
-        <Col>
+        <Col className="movies-title-col">
           <span>
             <h2 className="text-white-50 category-title bokor-family movies-title pb-0 m-0">
               MOVIES
             </h2>
           </span>
         </Col>
-        <Col className="d-flex justify-content-end align-items-end text-white-50 bokor-family">
+        <Col className="movies-options-col d-flex align-items-center text-white-50 bokor-family">
           <form action="" className="me-1">
             <input
               type="text"
@@ -81,7 +78,8 @@ const MovieSection = () => {
               variant="dark"
               menuVariant="dark"
               title="Sort by:"
-              className="mt-2 text-white-50"
+              // className="mt-2 text-white-50"
+              className=" text-white-50"
               onSelect={handleSelect}
             >
               <Dropdown.Item
@@ -110,7 +108,7 @@ const MovieSection = () => {
               variant="dark"
               menuVariant="dark"
               title="Genre"
-              className="mt-2"
+              // className="mt-2"
               bg="dark"
               onSelect={handleSelectGenre}
             >

@@ -34,6 +34,10 @@
   color: #fff;
 }
 
+.movies-options-col {
+  justify-content: flex-end;
+}
+
 .search:focus {
   outline: 0;
 }
@@ -43,11 +47,20 @@
 }
 
 @media (max-width: 575px) {
-  /* .poster-movies {
-    width: 80%;
-    margin: auto;
-  } */
+  .movies-title-col {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .movies-options-col {
+    justify-content: space-around !important;
+  }
   .movies-title {
     font-size: 25px;
+  }
+
+  #search {
+    font-size: 15px;
   }
 }
