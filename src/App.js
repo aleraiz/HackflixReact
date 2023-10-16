@@ -14,6 +14,7 @@ import SpinnerComponent from "./components/Spinner/SpinnerComponent";
 function App() {
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
+
   // const [mobileScreen, setMobileScreen] = useState(false);
 
   // useEffect(() => {
